@@ -10,6 +10,7 @@ target 'CrawlerExtension' do
 
   # Pods for CrawlerExtension
   pod 'KingfisherWebP'
+  pod 'ATGMediaBrowser'
 
 end
 
@@ -18,6 +19,7 @@ target 'ImageCrawler' do
   use_frameworks!
 
   # Pods for ImageCrawler
+  pod 'Reveal-SDK', '~> 14', :configurations => ['Debug']
 
   target 'ImageCrawlerTests' do
     inherit! :search_paths

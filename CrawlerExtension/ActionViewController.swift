@@ -2,6 +2,7 @@ import UIKit
 import MobileCoreServices
 import KingfisherWebP
 import Kingfisher
+import ATGMediaBrowser
 
 class ActionViewController: UIViewController {
     
@@ -19,8 +20,23 @@ class ActionViewController: UIViewController {
         return r
     }
     
+    private var isImpactOccurred: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.alwaysBounceVertical = true
+        view.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.168627451, blue: 0.2117647059, alpha: 1)
+        collectionView.backgroundColor = view.backgroundColor
+        
+        navigationController?.navigationBar.barTintColor = view.backgroundColor
+        //        navigationBar.isTranslucent = false
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.shadowImage = UIImage()
+        //        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        navigationController?.navigationBar.backgroundColor = view.backgroundColor
         
         for item in self.extensionContext!.inputItems as! [NSExtensionItem] {
             for provider in item.attachments! as! [NSItemProvider] {
@@ -32,7 +48,7 @@ class ActionViewController: UIViewController {
                         let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? [String: Any]
                         else { return }
                     let pageTitle = javaScriptValues["title"] as? String
-                    let url = javaScriptValues["URL"] as? String
+//                    let url = javaScriptValues["URL"] as? String
                     guard let imageURLs = javaScriptValues["imageURLs"] as? [String] else { return }
                     
                     print(imageURLs, imageURLs.count)
@@ -42,9 +58,9 @@ class ActionViewController: UIViewController {
                         let urls  = imageURLs
                             .filter { $0.trimmingCharacters(in: .whitespacesAndNewlines).count > 10 }
                             .filter { !$0.hasSuffix(".svg")}
+                            .map { $0.replacingOccurrences(of: "\"", with: "").replacingOccurrences(of: "\'", with: "") }
                         let set = Set<String>(urls)
                         self.imageURLs = Array(set)
-                        self.imageURLs = urls
                     }
                 }
             }
@@ -64,22 +80,79 @@ extension ActionViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
-        if let urlString = imageURLs[indexPath.item].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            
-            cell.imageView.kf.setImage(with: URL(string: urlString), options: [
-                .processor(WebPProcessor.default),
-                .cacheSerializer(WebPSerializer.default),
-                .requestModifier(modifier),
-                .backgroundDecode,
-                .transition(.fade(1))])
-            cell.imageView.kf.indicatorType = .activity
-//            cell.imageView.kf.indicator = IndicatorView
+        let urlString = imageURLs[indexPath.item]
+        
+        cell.imageView.kf.setImage(with: URL(string: urlString),
+                                   placeholder: #imageLiteral(resourceName: "placeholder.png"), options: [
+                                    .processor(WebPProcessor.default),
+                                    .cacheSerializer(WebPSerializer.default),
+                                    .requestModifier(modifier),
+                                    .backgroundDecode,
+                                    .transition(.fade(1))]){ (image, error, _, url) in
+                                        if let err = error {
+                                            print(err, url)
+                                            cell.imageView.image = #imageLiteral(resourceName: "placeholder_error.png")
+                                        }
         }
+        cell.imageView.kf.indicatorType = .activity
+        //            cell.imageView.kf.indicator = IndicatorView
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let mediaBrowser = MediaBrowserViewController(index: indexPath.item, dataSource: self, delegate: self)//MediaBrowserViewController(dataSource: self)
+        //        mediaBrowser.autoHideControls = false
+        mediaBrowser.hideControls = imageURLs.count > 10
+        present(mediaBrowser, animated: true, completion: nil)
         let urlString = imageURLs[indexPath.item]
         print(urlString)
+    }
+}
+
+extension ActionViewController: MediaBrowserViewControllerDataSource {
+    func numberOfItems(in mediaBrowser: MediaBrowserViewController) -> Int {
+        return imageURLs.count
+    }
+    
+    func mediaBrowser(_ mediaBrowser: MediaBrowserViewController, imageAt index: Int, completion: @escaping MediaBrowserViewControllerDataSource.CompletionBlock) {
+        let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ImageCell
+        let image = cell?.imageView.image ?? #imageLiteral(resourceName: "placeholder.png")
+        completion(index, image, ZoomScale.default, nil)
+    }
+}
+
+extension ActionViewController {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        headerLabel.text = scrollView.contentOffset.y <= -(scrollView.contentInset.top + 100) ? "松开关闭查看" : "下拉关闭查看"
+        
+        if scrollView.contentOffset.y <= -(scrollView.contentInset.top + 100) {
+            if isImpactOccurred { return }
+            isImpactOccurred = true
+            if #available(iOS 10.0, *) {
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.prepare()
+                generator.impactOccurred()
+            }
+        } else {
+            isImpactOccurred = false
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // 下拉关闭
+        if scrollView.contentOffset.y <= -(scrollView.contentInset.top + 100) {
+            // 让scrollView 不弹跳回来
+            scrollView.contentInset = UIEdgeInsetsMake(-1 * scrollView.contentOffset.y, 0, 0, 0)
+            scrollView.isScrollEnabled = false
+            done()
+        }
+    }
+}
+
+extension ActionViewController: MediaBrowserViewControllerDelegate {
+    func mediaBrowser(_ mediaBrowser: MediaBrowserViewController, didChangeFocusTo index: Int) {
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredVertically, animated: false)
     }
 }
