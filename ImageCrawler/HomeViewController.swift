@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     private lazy var textFiled: UITextField = {
         let view = UITextField()
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 //    private lazy var webViewController: WebViewController = {
 //        let view = WebViewController()
 //        return view
-//    }()
+//    }() 
 //
 //    private lazy var searchController: UISearchController = {
 //        let searchController = UISearchController(searchResultsController: webViewController)
@@ -47,24 +47,26 @@ class ViewController: UIViewController {
 //        return searchController
 //    }()
     
-//    private lazy var searchBar: UISearchBar = {
-//        let view = UISearchBar()
-//        let textField = (view.value(forKey: "searchField") as? UITextField)
-//        textField?.leftViewMode = .never
-//        view.placeholder = "Search or enter a link"
-//        textField?.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9098039216, blue: 0.9137254902, alpha: 1)
-//        return view
-//    }()
+    private lazy var searchBar: UISearchBar = {
+        let view = UISearchBar()
+        let textField = (view.value(forKey: "searchField") as? UITextField)
+        textField?.leftViewMode = .never
+        view.placeholder = "Search or enter a link"
+        textField?.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9098039216, blue: 0.9137254902, alpha: 1)
+        view.sizeToFit()
+        view.delegate = self
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isTranslucent = false
         definesPresentationContext = true
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(action))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(action))
         
-        navigationItem.titleView = textFiled//searchController.searchBar//textFiled
+        navigationItem.titleView = searchBar//textFiled//searchController.searchBar//textFiled
         
     }
     
@@ -72,6 +74,18 @@ class ViewController: UIViewController {
 //        searchController.view.isHidden = !searchController.view.isHidden
     }
     
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        
+        guard let urlString = searchBar.text else { return }
+        
+        let webVC = WebViewController()
+        webVC.load(for: urlString)
+        navigationController?.pushViewController(webVC, animated: true)
+    }
 }
 
 extension UITextField {

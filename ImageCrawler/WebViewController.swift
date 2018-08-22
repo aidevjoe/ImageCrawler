@@ -1,5 +1,6 @@
 import UIKit
 import WebKit
+import CrawlerCore
 
 class WebViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class WebViewController: UIViewController {
         return view
     }()
     
+    private lazy var imagesViewController = ImagesViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +36,30 @@ class WebViewController: UIViewController {
         
         view.addSubview(webView)
         webView.pin(to: view)
+    
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+    }
+    
+    @objc private func refresh() {
+//        webView.reload()
+        navigationController?.pushViewController(imagesViewController, animated: true)
     }
     
     deinit {
+        print(self.classForCoder.description() + "Deinit")
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         webView.navigationDelegate = nil
+    }
+    
+    public func load(for url: String) {
+        var urlString = url.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if !urlString.hasPrefix("https://") && !urlString.hasPrefix("http://") {
+            urlString = "http://" + urlString
+        }
+        guard let url = URL(string: urlString) else { return }
+        let request = URLRequest(url: url)
+        self.webView.load(request)
     }
 }
 
@@ -86,14 +107,8 @@ extension WebViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard var urlString = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        
-        if !urlString.hasPrefix("https://") && !urlString.hasPrefix("http://") {
-            urlString = "http://" + urlString
-        }
-        guard let url = URL(string: urlString) else { return }
-        let request = URLRequest(url: url)
-        self.webView.load(request)
+        guard let urlString = searchBar.text else { return }
+        load(for: urlString)
         searchBar.showsCancelButton = false
     }
 }
@@ -111,11 +126,59 @@ extension WebViewController: WKNavigationDelegate {
         webView.evaluateJavaScript("document.title", completionHandler: {(response, error) in
             self.title = response as? String
         })
+        let script = """
+            function getImageSrc() {
+                var urls = new Array();
+                var nodes = document.getElementsByTagName('*');
+                var disTag = ['br', 'hr', 'script', 'code', 'del', 'embed', 'frame', 'frameset', 'iframe', 'link', 'style', 'object', 'pre', 'video', 'wbr', 'xmp'];
+
+                for (var i = 0, len = nodes.length; i < len; i++) {
+                    var node = nodes[i];
+                    if (disTag.indexOf(node.tagName) > -1) {
+                        continue;
+                    } else if (node.tagName.toLowerCase() == 'input' && (node.type == 'radio' || node.type == 'checkbox')) {
+                        continue;
+                    }
+                    if (node.tagName.toLowerCase() == 'img') {
+                        urls.push(node.src);
+                    } else {
+                        var bgImage;
+                        if (document.defaultView && document.defaultView.getComputedStyle) {
+                            bgImage = document.defaultView.getComputedStyle(node, null).backgroundImage;
+                        } else {
+                            bgImage = node.currentStyle.backgroundImage;
+                        }
+                        if (bgImage == 'none') {
+                            continue;
+                        }
+                        var results = bgImage.match(/\\burl\\([^\\)]+\\)/gi);
+                        if (results == null || results.length <= 0) {
+                            continue;
+                        }
+                        var bgSrc = results[0].replace(/\\burl\\(|\\)/g, '').replace(/^\\s+|\\s+$/g, '');
+                        urls.push(bgSrc);
+                    }
+                }
+                return urls;
+            }
+            """
         
+        webView.evaluateJavaScript(script, completionHandler: { [weak self] response, error in
+            print(response, error)
+            webView.evaluateJavaScript("getImageSrc()", completionHandler: { [weak self] response, error in
+                print(response, error)
+                guard let imageURLs = response as? [String] else { return }
+                self?.imagesViewController.imageURLs = imageURLs
+            })
+        })
     }
     
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-    
+
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        print(webView.url)
+        decisionHandler(.allow)
+    }
 }

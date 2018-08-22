@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     static func activate(constraints: [NSLayoutConstraint]) {
         constraints.forEach { ($0.firstItem as? UIView)?.translatesAutoresizingMaskIntoConstraints = false }

@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		505026DDDE05CF1D4624FBA8 /* Pods_ImageCrawlerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4818198019107B4CDB3C78CC /* Pods_ImageCrawlerTests.framework */; };
 		58D70D2C8E6D973DE414EADC /* Pods_ImageCrawler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D803CF74250C689865E467AB /* Pods_ImageCrawler.framework */; };
-		7F9648E0FF2D5BE82A091F89 /* Pods_ImageCrawlerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE10BC804ABD9BA709C8E0B5 /* Pods_ImageCrawlerUITests.framework */; };
+		771EAC49212DA90C00098B2A /* GridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166D3212BE7FF00026283 /* GridFlowLayout.swift */; };
+		771EAC4A212DA90C00098B2A /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B934B212D947C00A48A46 /* ImagesViewController.swift */; };
+		771EAC4B212DA90C00098B2A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166D1212BE6A700026283 /* ImageCell.swift */; };
+		771EAC4C212DA90C00098B2A /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86427C3212D643E003C44D8 /* UIView+Layout.swift */; };
+		771EAC4D212DA90C00098B2A /* placeholder_error.png in Resources */ = {isa = PBXBuildFile; fileRef = D86427BB212D3B28003C44D8 /* placeholder_error.png */; };
+		771EAC4E212DA90C00098B2A /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D86427BF212D52DB003C44D8 /* placeholder.png */; };
+		771EAC52212DAD8900098B2A /* GridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166D3212BE7FF00026283 /* GridFlowLayout.swift */; };
+		771EAC53212DAD8D00098B2A /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B934B212D947C00A48A46 /* ImagesViewController.swift */; };
+		771EAC54212DAD8D00098B2A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166D1212BE6A700026283 /* ImageCell.swift */; };
+		771EAC55212DAD8D00098B2A /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86427C3212D643E003C44D8 /* UIView+Layout.swift */; };
+		771EAC56212DAD8D00098B2A /* placeholder_error.png in Resources */ = {isa = PBXBuildFile; fileRef = D86427BB212D3B28003C44D8 /* placeholder_error.png */; };
+		771EAC57212DAD8D00098B2A /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D86427BF212D52DB003C44D8 /* placeholder.png */; };
 		A4ACA3E4D198E0B424C70EA9 /* Pods_CrawlerExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAD09F38AD4E78120347018 /* Pods_CrawlerExtension.framework */; };
-		D86427BD212D3B28003C44D8 /* placeholder_error.png in Resources */ = {isa = PBXBuildFile; fileRef = D86427BB212D3B28003C44D8 /* placeholder_error.png */; };
-		D86427C0212D52DB003C44D8 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D86427BF212D52DB003C44D8 /* placeholder.png */; };
 		D86427C2212D5EDA003C44D8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86427C1212D5EDA003C44D8 /* WebViewController.swift */; };
-		D86427C4212D643E003C44D8 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86427C3212D643E003C44D8 /* UIView+Layout.swift */; };
 		D86427C6212D6885003C44D8 /* SwiftWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86427C5212D6884003C44D8 /* SwiftWebVC.swift */; };
 		D86427CA212D688B003C44D8 /* SwiftWebVCActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86427C7212D688B003C44D8 /* SwiftWebVCActivity.swift */; };
 		D86427CB212D688B003C44D8 /* SwiftWebVCActivityChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86427C8212D688B003C44D8 /* SwiftWebVCActivityChrome.swift */; };
@@ -22,35 +29,17 @@
 		D86427DA212D689C003C44D8 /* SwiftWebVC.strings in Resources */ = {isa = PBXBuildFile; fileRef = D86427CE212D689B003C44D8 /* SwiftWebVC.strings */; };
 		D86427DC212D68A7003C44D8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86427DB212D68A7003C44D8 /* Media.xcassets */; };
 		D8C1668B212BB6AA00026283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C1668A212BB6AA00026283 /* AppDelegate.swift */; };
-		D8C1668D212BB6AA00026283 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C1668C212BB6AA00026283 /* ViewController.swift */; };
+		D8C1668D212BB6AA00026283 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C1668C212BB6AA00026283 /* HomeViewController.swift */; };
 		D8C16690212BB6AA00026283 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C1668E212BB6AA00026283 /* Main.storyboard */; };
 		D8C16692212BB6AD00026283 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8C16691212BB6AD00026283 /* Assets.xcassets */; };
 		D8C16695212BB6AD00026283 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C16693212BB6AD00026283 /* LaunchScreen.storyboard */; };
-		D8C166A0212BB6AD00026283 /* ImageCrawlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C1669F212BB6AD00026283 /* ImageCrawlerTests.swift */; };
-		D8C166AB212BB6AD00026283 /* ImageCrawlerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166AA212BB6AD00026283 /* ImageCrawlerUITests.swift */; };
 		D8C166BF212BB6E800026283 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166BE212BB6E800026283 /* ActionViewController.swift */; };
 		D8C166C2212BB6E800026283 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C166C0212BB6E800026283 /* MainInterface.storyboard */; };
 		D8C166C6212BB6E800026283 /* CrawlerExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D8C166BC212BB6E800026283 /* CrawlerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D8C166D0212BB80E00026283 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = D8C166CF212BB80E00026283 /* Action.js */; };
-		D8C166D2212BE6A700026283 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166D1212BE6A700026283 /* ImageCell.swift */; };
-		D8C166D4212BE7FF00026283 /* GridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C166D3212BE7FF00026283 /* GridFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D8C1669C212BB6AD00026283 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D8C1667F212BB6AA00026283 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8C16686212BB6AA00026283;
-			remoteInfo = ImageCrawler;
-		};
-		D8C166A7212BB6AD00026283 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D8C1667F212BB6AA00026283 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8C16686212BB6AA00026283;
-			remoteInfo = ImageCrawler;
-		};
 		D8C166C4212BB6E800026283 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D8C1667F212BB6AA00026283 /* Project object */;
@@ -61,6 +50,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		770B936C212D959600A48A46 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D8C166CA212BB6E800026283 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,7 +79,13 @@
 		2FAD09F38AD4E78120347018 /* Pods_CrawlerExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrawlerExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78F7932B018A9BC95D4901 /* Pods-ImageCrawlerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageCrawlerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageCrawlerTests/Pods-ImageCrawlerTests.release.xcconfig"; sourceTree = "<group>"; };
 		4818198019107B4CDB3C78CC /* Pods_ImageCrawlerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageCrawlerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		770B934B212D947C00A48A46 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		771EAC20212DA6DD00098B2A /* ATGMediaBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ATGMediaBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		771EAC22212DA6DD00098B2A /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		771EAC24212DA6DD00098B2A /* KingfisherWebP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KingfisherWebP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		771EAC26212DA6DD00098B2A /* libwebp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = libwebp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7CCE661F6809A06522AF92 /* Pods-ImageCrawler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageCrawler.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageCrawler/Pods-ImageCrawler.release.xcconfig"; sourceTree = "<group>"; };
+		97F86A2EAD6EFA9398AAFFD2 /* Pods_CrawlerCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrawlerCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C730C5B217258A8E7A074D0 /* Pods-CrawlerExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrawlerExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrawlerExtension/Pods-CrawlerExtension.release.xcconfig"; sourceTree = "<group>"; };
 		9C7BF118A19A793B426973B1 /* Pods-ImageCrawlerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageCrawlerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageCrawlerUITests/Pods-ImageCrawlerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C25A914DFAFFB89C085AD6A0 /* Pods-ImageCrawlerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageCrawlerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImageCrawlerUITests/Pods-ImageCrawlerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,17 +112,11 @@
 		D86427DB212D68A7003C44D8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		D8C16687212BB6AA00026283 /* ImageCrawler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCrawler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C1668A212BB6AA00026283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8C1668C212BB6AA00026283 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D8C1668C212BB6AA00026283 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D8C1668F212BB6AA00026283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8C16691212BB6AD00026283 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8C16694212BB6AD00026283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8C16696212BB6AD00026283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8C1669B212BB6AD00026283 /* ImageCrawlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageCrawlerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8C1669F212BB6AD00026283 /* ImageCrawlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCrawlerTests.swift; sourceTree = "<group>"; };
-		D8C166A1212BB6AD00026283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8C166A6212BB6AD00026283 /* ImageCrawlerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageCrawlerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8C166AA212BB6AD00026283 /* ImageCrawlerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCrawlerUITests.swift; sourceTree = "<group>"; };
-		D8C166AC212BB6AD00026283 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8C166BC212BB6E800026283 /* CrawlerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CrawlerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C166BE212BB6E800026283 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		D8C166C1212BB6E800026283 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -127,6 +126,8 @@
 		D8C166D3212BE7FF00026283 /* GridFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridFlowLayout.swift; sourceTree = "<group>"; };
 		E8E822C99A92DC5A927630D6 /* Pods-ImageCrawlerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageCrawlerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImageCrawlerTests/Pods-ImageCrawlerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE10BC804ABD9BA709C8E0B5 /* Pods_ImageCrawlerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageCrawlerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F696ED7C626C11AEA518FA79 /* Pods-CrawlerCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrawlerCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrawlerCore/Pods-CrawlerCore.debug.xcconfig"; sourceTree = "<group>"; };
+		FDFEBD9CA58F55CB9870136E /* Pods-CrawlerCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrawlerCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrawlerCore/Pods-CrawlerCore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,22 +136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58D70D2C8E6D973DE414EADC /* Pods_ImageCrawler.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C16698212BB6AD00026283 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				505026DDDE05CF1D4624FBA8 /* Pods_ImageCrawlerTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C166A3212BB6AD00026283 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7F9648E0FF2D5BE82A091F89 /* Pods_ImageCrawlerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,10 +153,15 @@
 		53919CD0E75FD5BC2E424ED8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				771EAC20212DA6DD00098B2A /* ATGMediaBrowser.framework */,
+				771EAC22212DA6DD00098B2A /* Kingfisher.framework */,
+				771EAC24212DA6DD00098B2A /* KingfisherWebP.framework */,
+				771EAC26212DA6DD00098B2A /* libwebp.framework */,
 				2FAD09F38AD4E78120347018 /* Pods_CrawlerExtension.framework */,
 				D803CF74250C689865E467AB /* Pods_ImageCrawler.framework */,
 				4818198019107B4CDB3C78CC /* Pods_ImageCrawlerTests.framework */,
 				EE10BC804ABD9BA709C8E0B5 /* Pods_ImageCrawlerUITests.framework */,
+				97F86A2EAD6EFA9398AAFFD2 /* Pods_CrawlerCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,8 +177,31 @@
 				3E78F7932B018A9BC95D4901 /* Pods-ImageCrawlerTests.release.xcconfig */,
 				9C7BF118A19A793B426973B1 /* Pods-ImageCrawlerUITests.debug.xcconfig */,
 				C25A914DFAFFB89C085AD6A0 /* Pods-ImageCrawlerUITests.release.xcconfig */,
+				F696ED7C626C11AEA518FA79 /* Pods-CrawlerCore.debug.xcconfig */,
+				FDFEBD9CA58F55CB9870136E /* Pods-CrawlerCore.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		770B93AD212D99A300A48A46 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D8C166D3212BE7FF00026283 /* GridFlowLayout.swift */,
+				770B934B212D947C00A48A46 /* ImagesViewController.swift */,
+				D8C166D1212BE6A700026283 /* ImageCell.swift */,
+				D86427C3212D643E003C44D8 /* UIView+Layout.swift */,
+				770B93B1212D9A4A00A48A46 /* Icon */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		770B93B1212D9A4A00A48A46 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				D86427BB212D3B28003C44D8 /* placeholder_error.png */,
+				D86427BF212D52DB003C44D8 /* placeholder.png */,
+			);
+			path = Icon;
 			sourceTree = "<group>";
 		};
 		D86427CD212D689B003C44D8 /* SwiftWebVC */ = {
@@ -207,9 +220,8 @@
 		D8C1667E212BB6AA00026283 = {
 			isa = PBXGroup;
 			children = (
+				770B93AD212D99A300A48A46 /* Core */,
 				D8C16689212BB6AA00026283 /* ImageCrawler */,
-				D8C1669E212BB6AD00026283 /* ImageCrawlerTests */,
-				D8C166A9212BB6AD00026283 /* ImageCrawlerUITests */,
 				D8C166BD212BB6E800026283 /* CrawlerExtension */,
 				D8C16688212BB6AA00026283 /* Products */,
 				68344FAF24536415BE09C674 /* Pods */,
@@ -221,8 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				D8C16687212BB6AA00026283 /* ImageCrawler.app */,
-				D8C1669B212BB6AD00026283 /* ImageCrawlerTests.xctest */,
-				D8C166A6212BB6AD00026283 /* ImageCrawlerUITests.xctest */,
 				D8C166BC212BB6E800026283 /* CrawlerExtension.appex */,
 			);
 			name = Products;
@@ -232,34 +242,15 @@
 			isa = PBXGroup;
 			children = (
 				D8C1668A212BB6AA00026283 /* AppDelegate.swift */,
-				D8C1668C212BB6AA00026283 /* ViewController.swift */,
+				D8C1668C212BB6AA00026283 /* HomeViewController.swift */,
 				D8C1668E212BB6AA00026283 /* Main.storyboard */,
 				D8C16691212BB6AD00026283 /* Assets.xcassets */,
 				D8C16693212BB6AD00026283 /* LaunchScreen.storyboard */,
 				D8C16696212BB6AD00026283 /* Info.plist */,
 				D86427C1212D5EDA003C44D8 /* WebViewController.swift */,
-				D86427C3212D643E003C44D8 /* UIView+Layout.swift */,
 				D86427CD212D689B003C44D8 /* SwiftWebVC */,
 			);
 			path = ImageCrawler;
-			sourceTree = "<group>";
-		};
-		D8C1669E212BB6AD00026283 /* ImageCrawlerTests */ = {
-			isa = PBXGroup;
-			children = (
-				D8C1669F212BB6AD00026283 /* ImageCrawlerTests.swift */,
-				D8C166A1212BB6AD00026283 /* Info.plist */,
-			);
-			path = ImageCrawlerTests;
-			sourceTree = "<group>";
-		};
-		D8C166A9212BB6AD00026283 /* ImageCrawlerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D8C166AA212BB6AD00026283 /* ImageCrawlerUITests.swift */,
-				D8C166AC212BB6AD00026283 /* Info.plist */,
-			);
-			path = ImageCrawlerUITests;
 			sourceTree = "<group>";
 		};
 		D8C166BD212BB6E800026283 /* CrawlerExtension */ = {
@@ -267,12 +258,8 @@
 			children = (
 				D8C166CF212BB80E00026283 /* Action.js */,
 				D8C166BE212BB6E800026283 /* ActionViewController.swift */,
-				D8C166D3212BE7FF00026283 /* GridFlowLayout.swift */,
 				D8C166C0212BB6E800026283 /* MainInterface.storyboard */,
 				D8C166C3212BB6E800026283 /* Info.plist */,
-				D8C166D1212BE6A700026283 /* ImageCell.swift */,
-				D86427BB212D3B28003C44D8 /* placeholder_error.png */,
-				D86427BF212D52DB003C44D8 /* placeholder.png */,
 			);
 			path = CrawlerExtension;
 			sourceTree = "<group>";
@@ -290,6 +277,7 @@
 				D8C16685212BB6AA00026283 /* Resources */,
 				D8C166CA212BB6E800026283 /* Embed App Extensions */,
 				0F36A481FF420C8F881375D1 /* [CP] Embed Pods Frameworks */,
+				770B936C212D959600A48A46 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,44 +288,6 @@
 			productName = ImageCrawler;
 			productReference = D8C16687212BB6AA00026283 /* ImageCrawler.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D8C1669A212BB6AD00026283 /* ImageCrawlerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D8C166B2212BB6AD00026283 /* Build configuration list for PBXNativeTarget "ImageCrawlerTests" */;
-			buildPhases = (
-				0198B29DB720B49E8C514218 /* [CP] Check Pods Manifest.lock */,
-				D8C16697212BB6AD00026283 /* Sources */,
-				D8C16698212BB6AD00026283 /* Frameworks */,
-				D8C16699212BB6AD00026283 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D8C1669D212BB6AD00026283 /* PBXTargetDependency */,
-			);
-			name = ImageCrawlerTests;
-			productName = ImageCrawlerTests;
-			productReference = D8C1669B212BB6AD00026283 /* ImageCrawlerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D8C166A5212BB6AD00026283 /* ImageCrawlerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D8C166B5212BB6AD00026283 /* Build configuration list for PBXNativeTarget "ImageCrawlerUITests" */;
-			buildPhases = (
-				465A623C6332CA247F7E7EC5 /* [CP] Check Pods Manifest.lock */,
-				D8C166A2212BB6AD00026283 /* Sources */,
-				D8C166A3212BB6AD00026283 /* Frameworks */,
-				D8C166A4212BB6AD00026283 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D8C166A8212BB6AD00026283 /* PBXTargetDependency */,
-			);
-			name = ImageCrawlerUITests;
-			productName = ImageCrawlerUITests;
-			productReference = D8C166A6212BB6AD00026283 /* ImageCrawlerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		D8C166BB212BB6E800026283 /* CrawlerExtension */ = {
 			isa = PBXNativeTarget;
@@ -370,14 +320,6 @@
 					D8C16686212BB6AA00026283 = {
 						CreatedOnToolsVersion = 9.4;
 					};
-					D8C1669A212BB6AD00026283 = {
-						CreatedOnToolsVersion = 9.4;
-						TestTargetID = D8C16686212BB6AA00026283;
-					};
-					D8C166A5212BB6AD00026283 = {
-						CreatedOnToolsVersion = 9.4;
-						TestTargetID = D8C16686212BB6AA00026283;
-					};
 					D8C166BB212BB6E800026283 = {
 						CreatedOnToolsVersion = 9.4;
 					};
@@ -407,8 +349,6 @@
 			projectRoot = "";
 			targets = (
 				D8C16686212BB6AA00026283 /* ImageCrawler */,
-				D8C1669A212BB6AD00026283 /* ImageCrawlerTests */,
-				D8C166A5212BB6AD00026283 /* ImageCrawlerUITests */,
 				D8C166BB212BB6E800026283 /* CrawlerExtension */,
 			);
 		};
@@ -419,25 +359,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771EAC4D212DA90C00098B2A /* placeholder_error.png in Resources */,
 				D86427DC212D68A7003C44D8 /* Media.xcassets in Resources */,
 				D8C16695212BB6AD00026283 /* LaunchScreen.storyboard in Resources */,
 				D8C16692212BB6AD00026283 /* Assets.xcassets in Resources */,
+				771EAC4E212DA90C00098B2A /* placeholder.png in Resources */,
 				D86427DA212D689C003C44D8 /* SwiftWebVC.strings in Resources */,
 				D8C16690212BB6AA00026283 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C16699212BB6AD00026283 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C166A4212BB6AD00026283 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,8 +373,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D86427BD212D3B28003C44D8 /* placeholder_error.png in Resources */,
-				D86427C0212D52DB003C44D8 /* placeholder.png in Resources */,
+				771EAC56212DAD8D00098B2A /* placeholder_error.png in Resources */,
+				771EAC57212DAD8D00098B2A /* placeholder.png in Resources */,
 				D8C166D0212BB80E00026283 /* Action.js in Resources */,
 				D8C166C2212BB6E800026283 /* MainInterface.storyboard in Resources */,
 			);
@@ -455,24 +383,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0198B29DB720B49E8C514218 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ImageCrawlerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0F36A481FF420C8F881375D1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,41 +390,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ImageCrawler/Pods-ImageCrawler-frameworks.sh",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-14/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/ATGMediaBrowser/ATGMediaBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/KingfisherWebP/KingfisherWebP.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-14/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ATGMediaBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KingfisherWebP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImageCrawler/Pods-ImageCrawler-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		465A623C6332CA247F7E7EC5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ImageCrawlerUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92DA212587FA6E47798CCA1B /* [CP] Check Pods Manifest.lock */ = {
@@ -560,30 +452,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771EAC4A212DA90C00098B2A /* ImagesViewController.swift in Sources */,
 				D86427CC212D688B003C44D8 /* SwiftWebVCActivitySafari.swift in Sources */,
 				D86427CA212D688B003C44D8 /* SwiftWebVCActivity.swift in Sources */,
-				D86427C4212D643E003C44D8 /* UIView+Layout.swift in Sources */,
-				D8C1668D212BB6AA00026283 /* ViewController.swift in Sources */,
+				D8C1668D212BB6AA00026283 /* HomeViewController.swift in Sources */,
+				771EAC49212DA90C00098B2A /* GridFlowLayout.swift in Sources */,
 				D86427C2212D5EDA003C44D8 /* WebViewController.swift in Sources */,
+				771EAC4C212DA90C00098B2A /* UIView+Layout.swift in Sources */,
 				D8C1668B212BB6AA00026283 /* AppDelegate.swift in Sources */,
 				D86427CB212D688B003C44D8 /* SwiftWebVCActivityChrome.swift in Sources */,
 				D86427C6212D6885003C44D8 /* SwiftWebVC.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C16697212BB6AD00026283 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D8C166A0212BB6AD00026283 /* ImageCrawlerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C166A2212BB6AD00026283 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D8C166AB212BB6AD00026283 /* ImageCrawlerUITests.swift in Sources */,
+				771EAC4B212DA90C00098B2A /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,25 +470,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8C166D4212BE7FF00026283 /* GridFlowLayout.swift in Sources */,
+				771EAC53212DAD8D00098B2A /* ImagesViewController.swift in Sources */,
+				771EAC54212DAD8D00098B2A /* ImageCell.swift in Sources */,
 				D8C166BF212BB6E800026283 /* ActionViewController.swift in Sources */,
-				D8C166D2212BE6A700026283 /* ImageCell.swift in Sources */,
+				771EAC52212DAD8900098B2A /* GridFlowLayout.swift in Sources */,
+				771EAC55212DAD8D00098B2A /* UIView+Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D8C1669D212BB6AD00026283 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8C16686212BB6AA00026283 /* ImageCrawler */;
-			targetProxy = D8C1669C212BB6AD00026283 /* PBXContainerItemProxy */;
-		};
-		D8C166A8212BB6AD00026283 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8C16686212BB6AA00026283 /* ImageCrawler */;
-			targetProxy = D8C166A7212BB6AD00026283 /* PBXContainerItemProxy */;
-		};
 		D8C166C5212BB6E800026283 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D8C166BB212BB6E800026283 /* CrawlerExtension */;
@@ -785,7 +656,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T8CE5P8P3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Core",
+				);
 				INFOPLIST_FILE = ImageCrawler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -805,7 +681,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T8CE5P8P3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Core",
+				);
 				INFOPLIST_FILE = ImageCrawler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -817,98 +698,16 @@
 			};
 			name = Release;
 		};
-		D8C166B3212BB6AD00026283 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8E822C99A92DC5A927630D6 /* Pods-ImageCrawlerTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T8CE5P8P3Y;
-				INFOPLIST_FILE = ImageCrawlerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidevjoe.ImageCrawlerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageCrawler.app/ImageCrawler";
-			};
-			name = Debug;
-		};
-		D8C166B4212BB6AD00026283 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E78F7932B018A9BC95D4901 /* Pods-ImageCrawlerTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T8CE5P8P3Y;
-				INFOPLIST_FILE = ImageCrawlerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidevjoe.ImageCrawlerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageCrawler.app/ImageCrawler";
-			};
-			name = Release;
-		};
-		D8C166B6212BB6AD00026283 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C7BF118A19A793B426973B1 /* Pods-ImageCrawlerUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T8CE5P8P3Y;
-				INFOPLIST_FILE = ImageCrawlerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidevjoe.ImageCrawlerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ImageCrawler;
-			};
-			name = Debug;
-		};
-		D8C166B7212BB6AD00026283 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C25A914DFAFFB89C085AD6A0 /* Pods-ImageCrawlerUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T8CE5P8P3Y;
-				INFOPLIST_FILE = ImageCrawlerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidevjoe.ImageCrawlerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ImageCrawler;
-			};
-			name = Release;
-		};
 		D8C166C8212BB6E800026283 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29CF1AC9902C83DD55373976 /* Pods-CrawlerExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T8CE5P8P3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Core",
+				);
 				INFOPLIST_FILE = CrawlerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -930,6 +729,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T8CE5P8P3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Core",
+				);
 				INFOPLIST_FILE = CrawlerExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -962,24 +765,6 @@
 			buildConfigurations = (
 				D8C166B0212BB6AD00026283 /* Debug */,
 				D8C166B1212BB6AD00026283 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D8C166B2212BB6AD00026283 /* Build configuration list for PBXNativeTarget "ImageCrawlerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D8C166B3212BB6AD00026283 /* Debug */,
-				D8C166B4212BB6AD00026283 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D8C166B5212BB6AD00026283 /* Build configuration list for PBXNativeTarget "ImageCrawlerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D8C166B6212BB6AD00026283 /* Debug */,
-				D8C166B7212BB6AD00026283 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
