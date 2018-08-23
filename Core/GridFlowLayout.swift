@@ -1,7 +1,7 @@
 import UIKit
 
 class GridFlowLayout: UICollectionViewFlowLayout {
-    private let margin: CGFloat = 10
+    private let margin: CGFloat = 15
     private let itemHeight: CGFloat = 130
     var row: Int {
         return UIDevice.current.isLandscape ? (UIDevice.current.isPad ? 7 : 5) : UIDevice.current.isPad ? 6 : 3
@@ -22,9 +22,9 @@ class GridFlowLayout: UICollectionViewFlowLayout {
      */
     func setupLayout() {
         minimumInteritemSpacing = margin
-        //        minimumLineSpacing = 15
+        minimumLineSpacing = margin
         scrollDirection = .vertical
-        sectionInset = UIEdgeInsets(top: 20, left: margin, bottom: margin, right: margin)
+        sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
     }
     
     /// here we define the width of each cell, creating a 2 column layout. In case you would create 3 columns, change the number 2 to 3

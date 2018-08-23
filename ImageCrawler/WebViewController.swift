@@ -1,6 +1,7 @@
 import UIKit
 import WebKit
-import CrawlerCore
+import Kingfisher
+import KingfisherWebP
 
 class WebViewController: UIViewController {
     
@@ -27,7 +28,20 @@ class WebViewController: UIViewController {
         return view
     }()
     
-    private lazy var imagesViewController = ImagesViewController()
+    private var imagesViewController: ImagesViewController = ImagesViewController()
+    
+    private let urlString: String
+    
+    init(urlString: String) {
+        self.urlString = urlString
+        super.init(nibName: nil, bundle: nil)
+        
+        load(for: urlString)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +50,19 @@ class WebViewController: UIViewController {
         
         view.addSubview(webView)
         webView.pin(to: view)
-    
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
     }
     
     @objc private func refresh() {
-//        webView.reload()
-        navigationController?.pushViewController(imagesViewController, animated: true)
+        //        webView.reload()
+        
+        executeScript { [weak self] in
+            if let vc = self?.imagesViewController {
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
     }
     
     deinit {
@@ -80,10 +100,6 @@ extension WebViewController {
     }
     
     private func progressChanged(_ newValue: NSNumber) {
-        if newValue.floatValue < progressView.progress {
-            progressView.setProgress(1, animated: true)
-            return
-        }
         progressView.alpha = 1
         progressView.setProgress(newValue.floatValue, animated: true)
         if webView.estimatedProgress >= 1 {
@@ -116,16 +132,40 @@ extension WebViewController: UISearchBarDelegate {
 
 extension WebViewController: WKNavigationDelegate {
     
+    
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        executeScript()
+    }
+    
+    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+//        executeScript()
+//        decisionHandler(.allow)
+//        
+//        print("decidePolicyFor navigationAction")
+//    }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        executeScript()
+        print("didCommit")
+    }
+    
+    private func executeScript(_ completed: (() -> Void)? = nil) {
         
-        webView.evaluateJavaScript("document.title", completionHandler: {(response, error) in
+        webView.evaluateJavaScript("document.title", completionHandler: { [unowned self] response, error in
             self.title = response as? String
+            self.imagesViewController.folderName = self.title ?? self.webView.url?.lastPathComponent ?? (self.urlString as NSString).lastPathComponent
+            self.imagesViewController.urlString = self.webView.url?.absoluteString ?? self.urlString
         })
+        
         let script = """
             function getImageSrc() {
                 var urls = new Array();
@@ -161,24 +201,29 @@ extension WebViewController: WKNavigationDelegate {
                 }
                 return urls;
             }
+            getImageSrc();
             """
         
         webView.evaluateJavaScript(script, completionHandler: { [weak self] response, error in
-            print(response, error)
-            webView.evaluateJavaScript("getImageSrc()", completionHandler: { [weak self] response, error in
-                print(response, error)
-                guard let imageURLs = response as? [String] else { return }
-                self?.imagesViewController.imageURLs = imageURLs
-            })
+            guard let imageURLs = response as? [String] else { return }
+            self?.imagesViewController.configImageURLs(imageURLs)
+            
+            imageURLs.forEach { self?.downloadImage(url: $0)}
+            completed?()
         })
     }
     
-    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        print(webView.url)
-        decisionHandler(.allow)
+    
+    private func downloadImage(url: String) {
+        guard let url = URL(string: url) else { return }
+        KingfisherManager.shared.retrieveImage(with: url, options: [
+            .processor(WebPProcessor.default),
+            .cacheSerializer(WebPSerializer.default),
+            .backgroundDecode,
+            .targetCache(ImageCache(name: imagesViewController.folderName, path: imagesViewController.urlString, diskCachePathClosure: { [unowned self] path, cacheName -> String in
+                let fullFolderName = self.imagesViewController.folderName + Constants.Config.token + imagesViewController.urlString
+                let finalName = Base64FS.encodeString(str: fullFolderName)
+                return Constants.Config.rootDir.appendingPathComponent(finalName).relativePath
+            }))], progressBlock: nil, completionHandler: nil)
     }
 }

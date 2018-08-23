@@ -17,15 +17,32 @@ open class ImagesViewController: UIViewController {
         return collectionView
     }()
     
-    open var imageURLs: [String] = [] {
+    public var urlString: String = ""
+    public var folderName: String = "" {
+        didSet {
+            title = folderName
+        }
+    }
+
+
+    private var imageURLs: [String] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
     
+    open func configImageURLs(_ urls: [String]) {
+        let urls  = urls
+            .map { $0.replacingOccurrences(of: "\"", with: "").replacingOccurrences(of: "\'", with: "") }
+            .filter { $0.trimmingCharacters(in: .whitespacesAndNewlines).count > 5 }
+            .filter { !$0.hasSuffix(".svg") && !$0.hasPrefix("data:image/svg+xml;")}
+        let set = Set<String>(urls)
+        imageURLs = Array(set)
+    }
+    
     private let modifier = AnyModifier { request in
         var r = request
-        r.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Version/10.0 Mobile/14D27 Safari/602.1", forHTTPHeaderField: "User-Agent")
+        r.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 11_4 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Version/10.0 Mobile/14D27 Safari/602.1", forHTTPHeaderField: "User-Agent")
         return r
     }
     
@@ -56,6 +73,11 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
                                     .cacheSerializer(WebPSerializer.default),
                                     .requestModifier(modifier),
                                     .backgroundDecode,
+                                    .targetCache(ImageCache(name: folderName, path: self.urlString, diskCachePathClosure: { [unowned self] path, cacheName -> String in
+                                        let fullFolderName = folderName + Constants.Config.token + self.urlString
+                                        let finalName = Base64FS.encodeString(str: fullFolderName)
+                                        return Constants.Config.rootDir.appendingPathComponent(finalName).relativePath
+                                    })),
                                     .transition(.fade(1))]){ (image, error, _, url) in
                                         if let err = error {
                                             print(err, url)

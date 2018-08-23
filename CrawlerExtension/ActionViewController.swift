@@ -1,6 +1,5 @@
 import UIKit
 import MobileCoreServices
-import CrawlerCore
 
 class ActionViewController: ImagesViewController {
     
@@ -38,12 +37,7 @@ class ActionViewController: ImagesViewController {
                     
                     DispatchQueue.main.async {
                         self.title = pageTitle
-                        let urls  = imageURLs
-                            .filter { $0.trimmingCharacters(in: .whitespacesAndNewlines).count > 10 }
-                            .filter { !$0.hasSuffix(".svg")}
-                            .map { $0.replacingOccurrences(of: "\"", with: "").replacingOccurrences(of: "\'", with: "") }
-                        let set = Set<String>(urls)
-                        self.imageURLs = Array(set)
+                        self.configImageURLs(imageURLs)
                     }
                 }
             }

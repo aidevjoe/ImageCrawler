@@ -1,13 +1,11 @@
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseFileViewController {
     
     private lazy var textFiled: UITextField = {
         let view = UITextField()
         view.frame = CGRect(x: 0, y: 0, width: 300, height: 35)
         view.placeholder = "Website url or search"
-        
-        //        searchController.searchBar.barTintColor = UIColor.white
         view.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9098039216, blue: 0.9137254902, alpha: 1)
         view.layer.borderWidth = 0.5
         view.layer.borderColor = UIColor.white.cgColor
@@ -20,71 +18,46 @@ class HomeViewController: UIViewController {
         view.returnKeyType = .go
         view.autocapitalizationType = .none
         view.autocorrectionType = .no
-        return view
-    }()
-    
-//    private lazy var webViewController: WebViewController = {
-//        let view = WebViewController()
-//        return view
-//    }() 
-//
-//    private lazy var searchController: UISearchController = {
-//        let searchController = UISearchController(searchResultsController: webViewController)
-////        searchController.searchResultsUpdater = webViewController
-//        searchController.searchBar.delegate = webViewController
-//        searchController.searchBar.barTintColor = .white
-//        searchController.searchBar.textField?.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9098039216, blue: 0.9137254902, alpha: 1)
-//        searchController.searchBar.textField?.leftViewMode = .never
-////        searchController.searchBar.tintColor = Constants.Colors.globalTintColor
-//        searchController.searchBar.layer.borderWidth = 0.5
-//        searchController.searchBar.layer.borderColor = UIColor.white.cgColor
-//        searchController.searchBar.keyboardType = .webSearch
-//        searchController.searchBar.returnKeyType = .go
-//        searchController.searchBar.showsCancelButton = false
-//        searchController.searchBar.autocapitalizationType = .none
-//        searchController.hidesNavigationBarDuringPresentation = false
-//        searchController.searchBar.searchBarStyle = .prominent
-//        return searchController
-//    }()
-    
-    private lazy var searchBar: UISearchBar = {
-        let view = UISearchBar()
-        let textField = (view.value(forKey: "searchField") as? UITextField)
-        textField?.leftViewMode = .never
-        view.placeholder = "Search or enter a link"
-        textField?.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9098039216, blue: 0.9137254902, alpha: 1)
-        view.sizeToFit()
         view.delegate = self
         return view
     }()
+    
+    init() {
+        super.init(initialPath: Constants.Config.rootDir, title: "")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    private var items: [FileItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isTranslucent = false
         definesPresentationContext = true
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(action))
         
-        navigationItem.titleView = searchBar//textFiled//searchController.searchBar//textFiled
+        navigationItem.titleView = textFiled
+        textFiled.text = "https://unsplash.com/"
         
     }
     
-    @objc private func action() {
-//        searchController.view.isHidden = !searchController.view.isHidden
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        textFiled.resignFirstResponder()
+        super.tableView(tableView, didSelectRowAt: indexPath)
     }
-    
 }
 
-extension HomeViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
         
-        guard let urlString = searchBar.text else { return }
+        guard let urlString = textField.text else { return true }
         
-        let webVC = WebViewController()
-        webVC.load(for: urlString)
+        let webVC = WebViewController(urlString: urlString)
         navigationController?.pushViewController(webVC, animated: true)
+        return true
     }
 }
 
